@@ -1,27 +1,63 @@
 # SportStore
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
+Aplicación demo de e‑commerce construida con Angular 13. Permite explorar productos, filtrarlos por categoría, paginarlos, ver detalles, gestionar un carrito de compras y completar un proceso de checkout. Incluye ruteo con guards, módulos de características y un backend simulado con json-server.
 
-## Development server
+## Características principales
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Catálogo de productos:
+    - Listado de productos con detalles.
+    - Filtrado por categoría.
+    - Paginación del listado de productos.
+- Carrito de compras:
+    - Agregar, eliminar y actualizar cantidades.
+    - Resumen rápido de carrito y vista de detalle del carrito.
+- Checkout y órdenes:
+    - Modelo de órdenes y flujo de compra.
+- Navegación y seguridad:
+    - Rutas configuradas para tienda, carrito y checkout.
+    - Guard de rutas que protege el flujo de navegación.
+- Arquitectura modular:
+    - Módulo Store (presentación y navegación).
+    - Módulo Model (modelos, repositorios y datasource).
+    - Directiva personalizada para contadores en UI.
+- Backend simulado:
+    - API falsa con json-server y middleware de autenticación para endpoints protegidos.
 
-## Code scaffolding
+## Tecnologías
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular 13, TypeScript 4.4
+- RxJS, Bootstrap 5
+- json-server para datos simulados
 
-## Build
+## Requisitos
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Node.js y npm
+- Angular CLI 13
 
-## Running unit tests
+## Configuración y ejecución
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1) Instalar dependencias: ```npm install```
 
-## Running end-to-end tests
+2) Iniciar backend simulado (json-server): ```npm run json-server```
+### Alternativa directa
+```npx json-server data.js -p 3500 -m authMiddleware.js```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3) Iniciar servidor de desarrollo Angular: ```npm start``` o ```ng serve```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+4) Abrir la app:
+- http://localhost:4200/
+
+## Estructura de módulos (alto nivel)
+
+- Módulo Model:
+    - Modelos de dominio: Producto, Carrito, Orden.
+    - Repositorios: acceso a productos y órdenes.
+    - Datasource estático: integración con json-server.
+- Módulo Store:
+    - Componentes: tienda, resumen de carrito, detalle de carrito, checkout.
+    - Directiva personalizada para control de contadores.
+    - Ruteo propio e integración con el ruteo raíz.
+- Guarda de rutas:
+    - Protege el acceso directo a rutas para mantener el flujo desde la tienda.
+
